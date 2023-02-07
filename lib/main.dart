@@ -35,7 +35,8 @@ Future<void> initGlobalHotkeys() async {
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   if (isDesktop) {
-    await WindowManager.instance.ensureInitialized();
+    await windowManager.ensureInitialized();
+    //await WindowManager.instance.ensureInitialized();
     windowManager.waitUntilReadyToShow().then((_) async {
       await windowManager.setTitleBarStyle(
         TitleBarStyle.hidden,
@@ -116,6 +117,30 @@ class _MyHomePageState extends State<MyHomePage> {
                   '$_counter',
                   style: Theme.of(context).textTheme.headlineMedium,
                 ),
+                Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 40),
+                    child: Column(
+                      children: [
+                        Text(
+                          "Reproduce the bug",
+                          style: Theme.of(context).textTheme.titleLarge,
+                        ),
+                        const Text(
+                            "1. Press `Arrow Down` or `Arrow Up` Key, which will decrease or increase the Counter"),
+                        const Text(
+                            "2. Press `ESC` (Escape Key) to hide the window via window_manager"),
+                        const Text(
+                            "3. Press `Ctrl + Alt + Space` to show the window again"),
+                        const Text(
+                            "4. Now the shortcuts Arrow Up and Arrow Down don't work anymore."),
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        const Text(
+                          "Type something in the textfield and press `Arrow Up` and `Arrow Down` will now have the default behavior.",
+                        )
+                      ],
+                    ))
               ],
             ))));
   }
