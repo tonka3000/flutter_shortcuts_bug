@@ -1,6 +1,11 @@
-# Shortcuts Bug
+# Shortcuts Hide/Show Bug
 
 A demo project which demonstrate a shortcuts bug (I had it on windows 10).
+
+## Solution
+
+Replacing `LogicalKeySet` with `SingleActivator` will fix the issue.
+`LogicalKeySet` seems to be broken. `SingleActivator` is the recommended activator class.
 
 ## Versions used
 
